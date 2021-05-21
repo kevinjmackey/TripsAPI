@@ -18,10 +18,10 @@
           "Token": "RailCrew",
           "Properties": [
             {
-              "DBRead": "Data Source=rcxks-rpt;Initial Catalog=RCXBP;User ID=rcx_snapshots_viewonly;Password=SnapShots15729;Trusted_Connection=False"
+              "DBRead": "Data Source=rcxks-rpt;Initial Catalog=RCXBP;User ID=<really cant say>;Password=<really cant say>;Trusted_Connection=False"
             },
             {
-              "DBWrite": "Data Source=sql2014cli;Initial Catalog=Railcrew;User ID=FuelPin;Password=XN7zY5AKvyj2VDZmhyTB;Trusted_Connection=False"
+              "DBWrite": "Data Source=sql2014cli;Initial Catalog=Railcrew;User ID=<really cant say>;Password=<really cant say>;Trusted_Connection=False"
             }
           ],
           "Roles": [

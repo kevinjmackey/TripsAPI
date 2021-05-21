@@ -1,6 +1,6 @@
 begin
-   datastore RailCrew {"DBRead" : "Data Source=rcxks-rpt;Initial Catalog=RCXBP;User ID=rcx_snapshots_viewonly;Password=SnapShots15729;Trusted_Connection=False",
-                       "DBWrite" : "Data Source=sql2014cli;Initial Catalog=Railcrew;User ID=FuelPin;Password=XN7zY5AKvyj2VDZmhyTB;Trusted_Connection=False"}
+   datastore RailCrew {"DBRead" : "Data Source=rcxks-rpt;Initial Catalog=RCXBP;User ID=<really cant say>;Password=<really cant say>;Trusted_Connection=False",
+                       "DBWrite" : "Data Source=sql2014cli;Initial Catalog=Railcrew;User ID=<really cant say>;Password=<really cant say>;Trusted_Connection=False"}
 	   item Trip "Trips" {"queries" : ["Active", "Closed"], "authenticate" : "true", "dbr" : "RailCrew"}
            associated trip_client many_to_one Client key ClientID key ClientID
            associated trip_masterClient many_to_one MasterClient key MasterClientID key MasterClientID
