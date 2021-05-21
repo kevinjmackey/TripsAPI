@@ -1,0 +1,116 @@
+using Microsoft.Extensions.Options;
+using System;
+using System.Collections.Generic;
+using Dapper;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using Serilog;
+using @!Namespace!@.Entities;
+using @!Namespace!@.Helpers;
+
+namespace @!Namespace!@.Services
+{
+    public interface I@!item.CapName!@Service
+    {
+        IEnumerable<@!item.CapName!@> GetAll();
+        @!item.CapName!@ GetById(int _id);
+<!--(if item.HasProperty("queries"))-->
+    <!--(for i, query in enumerate(list(item.GetProperty("queries").split(","))))-->
+        IEnumerable<@!item.CapName!@> Get@!item.CapPlural!@@!query.replace("'","").strip()!@();
+    <!--(end)-->
+<!--(end)-->
+<!--(if item.HasAssociations)-->
+    <!--(for i, association in enumerate(item.Associations))-->
+        <!--(if association.Cardinality=="1-2-1")-->@!item.CapName!@<!--(else)-->IEnumerable<@!item.CapName!@><!--(end)--> GetBy@!association.FromKey!@(int _id);
+    <!--(end)-->
+<!--(end)-->
+    }
+
+    public class @!item.CapName!@Service : I@!item.CapName!@Service
+    {
+        private readonly AppSettings _appSettings;
+
+        public @!item.CapName!@Service(IOptions<AppSettings> appSettings)
+        {
+            _appSettings = appSettings.Value;
+        }
+        public IEnumerable<@!item.CapName!@> GetAll()
+        {
+            using (SqlConnection conn = new SqlConnection(_appSettings.DBRead))
+            {
+                var procedure = "[<!--(if item.HasProperty("dbr"))-->@!item.GetProperty("dbr")!@<!--(else)-->RailCrew<!--(end)-->].[Services].[Get@!item.CapPlural!@]";
+                try
+                {
+                    return conn.Query<@!item.CapName!@>(procedure, commandType: CommandType.StoredProcedure).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "GetAll @!item.CapPlural!@ failure");
+                    return null;
+                }
+            }
+        }
+        public @!item.CapName!@ GetById(int _id)
+        {
+            @!item.CapName!@ @!item.Name.lower()!@;
+            using (SqlConnection conn = new SqlConnection(_appSettings.DBRead))
+            {
+                var procedure = "[<!--(if item.HasProperty("dbr"))-->@!item.GetProperty("dbr")!@<!--(else)-->RailCrew<!--(end)-->].[Services].[Get@!item.CapName!@ById]";
+                var values = new { Id = _id };
+                try
+                {
+                    @!item.Name.lower()!@ = conn.Query<@!item.CapName!@>(procedure, values, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "GetAll @!item.CapPlural!@ failure");
+                    @!item.Name.lower()!@ = null;
+                }
+                return @!item.Name.lower()!@;
+            }
+        }
+<!--(if item.HasProperty("queries"))-->
+    <!--(for i, query in enumerate(list(item.GetProperty("queries").split(","))))-->
+        public IEnumerable<@!item.CapName!@> Get@!item.CapPlural!@@!query.replace("'","").strip()!@()
+        {
+            using (SqlConnection conn = new SqlConnection(_appSettings.DBRead))
+            {
+                var procedure = "[<!--(if item.HasProperty("dbr"))-->@!item.GetProperty("dbr")!@<!--(else)-->RailCrew<!--(end)-->].[Services].[Get@!item.CapPlural!@@!query.replace("'","").strip()!@]";
+                try
+                {
+                    return conn.Query<@!item.CapName!@>(procedure, commandType: CommandType.StoredProcedure).ToList();
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Get@!item.CapPlural!@@!query.replace("'","").strip()!@ failure");
+                    return null;
+                }
+            }
+        }
+    <!--(end)-->
+<!--(end)-->
+
+<!--(if item.HasAssociations)-->
+    <!--(for i, association in enumerate(item.Associations))-->
+        public <!--(if association.Cardinality=="1-2-1")-->@!item.CapName!@<!--(else)-->IEnumerable<@!item.CapName!@><!--(end)--> GetBy@!association.FromKey!@(int _id)
+        {
+            using (SqlConnection conn = new SqlConnection(_appSettings.DBRead))
+            {
+                var procedure = "[<!--(if item.HasProperty("dbr"))-->@!item.GetProperty("dbr")!@<!--(else)-->RailCrew<!--(end)-->].[Services].[Get<!--(if association.Cardinality!="1-2-1")-->@!item.CapPlural!@<!--(else)-->@!item.CapName!@<!--(end)-->By@!association.FromKey!@]";
+                var values = new { @!association.FromKey!@ = _id };
+                try
+                {
+                    return conn.Query<@!item.CapName!@>(procedure, values, commandType: CommandType.StoredProcedure)<!--(if association.Cardinality!="1-2-1")-->.ToList()<!--(else)-->.FirstOrDefault()<!--(end)-->;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "Get@!item.CapPlural!@@!association.FromKey!@ failure");
+                    return null;
+                }
+            }
+        }
+    <!--(end)-->
+<!--(end)-->
+    }
+}

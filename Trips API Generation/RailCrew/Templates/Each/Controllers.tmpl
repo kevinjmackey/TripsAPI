@@ -1,0 +1,113 @@
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Serilog;
+using System;
+using @!Namespace!@.Entities;
+using @!Namespace!@.Models;
+using @!Namespace!@.Services;
+
+namespace @!Namespace!@.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class @!item.CapPlural!@Controller : ControllerBase
+    {
+        private I@!item.CapName!@Service _@!item.Name.lower()!@Service;
+<!--(if item.HasProperty("authenticate"))-->
+        private IUserService _userService;
+<!--(end)-->
+
+        public @!item.CapPlural!@Controller(I@!item.CapName!@Service @!item.Name.lower()!@Service<!--(if item.HasProperty("authenticate"))-->, IUserService userService<!--(end)-->)
+        {
+            _@!item.Name.lower()!@Service = @!item.Name.lower()!@Service;
+<!--(if item.HasProperty("authenticate"))-->
+            _userService = userService;
+<!--(end)-->
+        }
+
+<!--(if item.HasProperty("authenticate"))-->
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate(AuthenticateRequest model)
+        {
+            var response = _userService.Authenticate(model);
+
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            return Ok(response);
+        }
+<!--(end)-->
+        [Authorize]
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                IEnumerable<@!item.CapName!@> @!item.Plural.lower()!@ = _@!item.Name.lower()!@Service.GetAll();
+                return Ok(@!item.Plural.lower()!@);
+            }
+            catch (System.Exception ex)
+            {
+                Log.Error($"Caught exception: {ex.Message}");
+                return NotFound(new { message = "Failed to retrieve @!item.CapPlural!@" });
+            }
+        }
+
+        [Authorize]
+        [HttpGet("{id}")]
+        public IActionResult GetById(int Id)
+        {
+            @!item.CapName!@ @!item.Name.lower()!@;
+            try
+            {
+                @!item.Name.lower()!@ = _@!item.Name.lower()!@Service.GetById(Id);
+                return Ok(@!item.Name.lower()!@);
+            }
+            catch (System.Exception ex)
+            {
+                Log.Error($"Caught exception: {ex.Message}");
+                return NotFound(new { message = $"@!item.CapName!@ {Id} not found" });
+            }
+        }
+<!--(if item.HasProperty("queries"))-->
+    <!--(for i, query in enumerate(list(item.GetProperty("queries").split(","))))-->
+    
+        [Authorize]
+        [HttpGet("@!query.replace("'","").strip().lower()!@")]
+        public IActionResult Get@!item.CapPlural!@@!query.replace("'","").strip()!@()
+        {
+            try
+            {
+                IEnumerable<@!item.CapName!@> @!item.Plural.lower()!@ = _@!item.Name.lower()!@Service.Get@!item.CapPlural!@@!query.replace("'","").strip()!@();
+                return Ok(@!item.Plural.lower()!@);
+            }
+            catch (System.Exception ex)
+            {
+                Log.Error($"Caught exception: {ex.Message}");
+                return NotFound(new { message = "Failed to retrieve @!query.replace("'","").strip()!@ @!item.CapPlural!@" });
+            }
+        }      
+    <!--(end)-->
+<!--(end)-->
+<!--(if item.HasAssociations)-->
+    <!--(for i, association in enumerate(item.Associations))-->
+
+        [Authorize]
+        [HttpGet("@!association.Item.lower()!@/{Id}")]
+        public IActionResult GetBy@!association.FromKey!@(int Id)
+        {
+            try
+            {
+                <!--(if association.Cardinality!="1-2-1")-->IEnumerable<@!item.CapName!@><!--(else)-->@!item.CapName!@<!--(end)--> <!--(if association.Cardinality!="1-2-1")-->@!item.Plural.lower()!@<!--(else)-->@!item.Name.lower()!@<!--(end)--> = _@!item.Name.lower()!@Service.GetBy@!association.FromKey!@(Id);
+                return Ok(<!--(if association.Cardinality!="1-2-1")-->@!item.Plural.lower()!@<!--(else)-->@!item.Name.lower()!@<!--(end)-->);
+            }
+            catch (System.Exception ex)
+            {
+                Log.Error($"Caught exception: {ex.Message}");
+                return NotFound(new { message = "Failed to retrieve @!item.CapPlural!@ by @!association.FromKey!@" });
+            }
+        }
+    <!--(end)-->
+<!--(end)-->
+    }
+}

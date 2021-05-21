@@ -1,0 +1,17 @@
+using System;
+using System.Text.Json.Serialization;
+
+namespace @!Namespace!@.Entities
+{
+    public class @!item.CapName!@
+    {
+    <!--(for i, attribute in enumerate(item.Attributes))-->
+        public <!--(if attribute.Datatype.lower()=="string")-->string<!--(elif attribute.Datatype.lower()=="character")-->string<!--(elif attribute.Datatype.lower()=="numeric")-->Decimal<!--(elif attribute.Datatype.lower()=="integer")-->int<!--(elif attribute.Datatype.lower()=="datetime")-->DateTime<!--(elif attribute.Datatype.lower()=="boolean")-->Boolean<!--(else)-->@!attribute.Datatype.lower()!@<!--(end)--> @!attribute.Name!@ { get; set; }
+    <!--(end)-->
+
+        public @!item.CapName!@()
+        {
+
+        }
+    }
+}

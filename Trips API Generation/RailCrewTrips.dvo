@@ -1,0 +1,128 @@
+begin
+   datastore RailCrew {"DBRead" : "Data Source=rcxks-rpt;Initial Catalog=RCXBP;User ID=rcx_snapshots_viewonly;Password=SnapShots15729;Trusted_Connection=False",
+                       "DBWrite" : "Data Source=sql2014cli;Initial Catalog=Railcrew;User ID=FuelPin;Password=XN7zY5AKvyj2VDZmhyTB;Trusted_Connection=False"}
+	   item Trip "Trips" {"queries" : ["Active", "Closed"], "authenticate" : "true", "dbr" : "RailCrew"}
+           associated trip_client many_to_one Client key ClientID key ClientID
+           associated trip_masterClient many_to_one MasterClient key MasterClientID key MasterClientID
+		TripID :Integer {"PK" : "true", "auto" : "true"}
+		Company :String Length 50 
+		MasterClientID :Integer 
+		ClientID :Integer 
+		TripNumber :String Length 50 
+		ControlNumber :String Length 50 
+		LocationID :Integer 
+		PickUpPointID :Integer 
+		DropOffPointID :Integer 
+		PickupDateTime :DATETIME 
+		Distance :Numeric Precision 18 Scale 0 
+		DriveTime :Integer 
+		TripType :Integer 
+		ASAP :Boolean 
+		IsDYVPossible :Boolean 
+		EstAssistHours :Integer 
+		LeadLocomotive :String Length 50 
+		RequesterName :String Length 50 
+		RequestorPhone :Character Length 15 
+		Comments :String Length 4000 
+		DispatcherNotes :String Length 4000 
+		DriverID :Integer 
+		SubContractorID :Integer 
+		IsAwaitingDispatch :Boolean 
+		IsWaitingResponse :Boolean 
+		IsTripClosed :Boolean 
+		VehicleID :Integer 
+		DriverDispatchTime :DATETIME 
+		TimeZoneID :Integer 
+		OverrideManager :String Length 50 
+		CallDateTime :DATETIME 
+		TrainNumber :String Length 50 
+		GetNextDriverReason :String Length 250 
+		AuditUserID :Integer 
+		AuditLastUpdate :DATETIME 
+		CalledDriverDateTime :DATETIME 
+		GetNextVehicleReason :String Length 250 
+		DispatchedByUserID :Integer 
+		DispatchedDateTime :DATETIME 
+		IsAmended :Boolean 
+		CancelReason :String Length 100 
+		Cancelled :Boolean 
+		CancelReasonID :Integer 
+		IsMPV :Boolean 
+		OrigPickupDateTime :DATETIME 
+		DriverChangeReasonID :Integer 
+		VehicleChangeReasonID :Integer 
+		HasBackhaul :Boolean 
+		RecurringTripID :Integer 
+		PickupAdHocLatitude :Numeric Precision 18 Scale 10 
+		PickupAdHocLongitude :Numeric Precision 18 Scale 10 
+		PickupAdHocID :String Length 50 
+		DropoffAdHocLatitude :Numeric Precision 18 Scale 10 
+		DropoffAdHocLongitude :Numeric Precision 18 Scale 10 
+		DropoffAdHocID :String Length 50 
+		ParentTripID :Integer 
+		ShortKey :Character Length 6 
+	   end_item
+          item TripReview "Trip Review" {"dbr" : "RailCrew"}
+           associated trip_review_trip one_to_one Trip key TripID key TripID
+	    TripReviewID :Integer {"PK" : "true", "auto" : "true"}
+	    TripID :Integer 
+	    Approved :Boolean 
+	    ApprovedDateTime :Datetime 
+	    ApprovedByUserID :Integer 
+	    TripMiles :Numeric Precision 18 Scale 2 
+	    TripWaitMinutes :Numeric Precision 18 Scale 2 
+	    InvoiceID :Integer 
+	    PayrollID :Integer 
+	    AssistMiles :Numeric Precision 18 Scale 2 
+	    IsCanceled :Boolean 
+	    CancelCode :Integer 
+	    IsDispatchApproved :Boolean 
+	    Ignore :Boolean 
+	    FailReason :String Length 4000 
+	    Repo :Boolean 
+	    CreateDateTime :Datetime 
+	    DispatchApprovedDateTime :Datetime 
+	    FailReportIntervalDT :Datetime 
+	    PendingReportIntervalDT :Datetime 
+	    PendingReportIntervalFMDT :Datetime 
+	    OverRide :Boolean 
+	    ApproveNotes :String Length 4000 
+	    ITNotes :String Length 4000 
+	    ReviewToggle :Boolean 
+	    AcceptedB2B :Boolean 
+	    B2BErrorMessage :String Length 4000 
+	    LitmusPassID :Integer 
+	    LitmusRunCount :Integer 
+	    LitmusPassDT :Datetime 
+	    LitmusFirstRunDT :Datetime 
+	    B2BMessageName :String Length 50 
+	    DispatchApprovalReturnReason :String Length 4000 
+	    LateReason :String Length 100 
+	    LitmusOverrideReason :String Length 4000 
+	    DriverCalledDateTime :Datetime 
+	    DriverCalledByUser :String Length 50 
+	    ForcedReviewCode :Integer 
+	    MPV :Boolean 
+	    MPVLitmusHold :Boolean 
+	    AcceptedB2BDateTime :Datetime 
+	    OnTime :Boolean 
+	    IgnoreForOTP :Boolean 
+	    OTPLateTime :Datetime 
+	    OTPArrivalTime :Datetime 
+	    AuditUserID :Integer 
+	    AuditLastUpdate :Datetime 
+	    DriveCamSent :Boolean 
+	    SheetReceivedDateTime :Datetime 
+	    SheetReceivedByUser :String Length 50 
+	    ClosedBy :String Length 50 
+	    Mapped :Boolean 
+	    ReOpenedBy :Integer 
+	    ReOpenedDateTime :Datetime 
+	    ClientInfo :String Length 50 
+	    BookerEmail :String Length 100 
+	    DriverETA :Datetime 
+	    SendInfoStatus :Integer 
+	    Verified :Boolean
+      end_item
+    end_datastore
+end

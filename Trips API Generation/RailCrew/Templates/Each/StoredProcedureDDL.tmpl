@@ -1,0 +1,92 @@
+
+USE [<!--(if item.HasProperty("dbr"))-->@!item.GetProperty("dbr")!@<!--(else)-->RailCrew<!--(end)-->];
+GO
+
+IF OBJECT_ID('Services.Get@!item.CapPlural!@', 'P') IS NOT NULL
+DROP PROCEDURE [Services].[Get@!item.CapPlural!@];
+GO
+
+--DROP PROCEDURE IF EXISTS [Services].[Get@!item.CapPlural!@];
+--GO
+
+CREATE PROCEDURE [Services].[Get@!item.CapPlural!@]
+AS
+BEGIN
+    SELECT
+<!--(for i, attribute in enumerate(item.Attributes))-->
+        [@!item.Plural.lower()!@].[@!attribute.Name!@]<!--(if len(item.Attributes)>(i+1))-->,<!--(end)-->
+<!--(end)-->
+    FROM  [<!--(if item.HasProperty("schema"))-->@!item.GetProperty("schema")!@<!--(else)-->dbo<!--(end)-->].[@!item.Name!@] AS [@!item.Plural.lower()!@] WITH (NOLOCK);
+END
+
+GO
+
+IF OBJECT_ID('Services.Get@!item.CapName!@ById', 'P') IS NOT NULL
+DROP PROCEDURE [Services].[Get@!item.CapName!@];
+GO
+
+--DROP PROCEDURE IF EXISTS [Services].[Get@!item.CapName!@ById];
+--GO
+
+CREATE PROCEDURE [Services].[Get@!item.CapName!@ById]
+	(@Id INT)
+AS
+BEGIN
+    SELECT
+<!--(for i, attribute in enumerate(item.Attributes))-->
+        [@!item.Name.lower()!@].[@!attribute.Name!@]<!--(if len(item.Attributes)>(i+1))-->,<!--(end)-->
+<!--(end)-->
+    FROM  [<!--(if item.HasProperty("schema"))-->@!item.GetProperty("schema")!@<!--(else)-->dbo<!--(end)-->].[@!item.Name!@] AS [@!item.Name.lower()!@] WITH (NOLOCK)
+    WHERE @!item.CapName!@ID = @Id;
+END
+
+GO
+
+<!--(if item.HasAssociations)-->
+    <!--(for i, association in enumerate(item.Associations))-->
+    
+ IF OBJECT_ID('Services.Get<!--(if association.Cardinality!="1-2-1")-->@!item.CapPlural!@<!--(else)-->@!item.CapName!@<!--(end)-->By@!association.FromKey!@', 'P') IS NOT NULL
+ DROP PROCEDURE [Services].[Get<!--(if association.Cardinality!="1-2-1")-->@!item.CapPlural!@<!--(else)-->@!item.CapName!@<!--(end)-->By@!association.FromKey!@];
+ GO
+
+--DROP PROCEDURE IF EXISTS [Services].[Get<!--(if association.Cardinality!="1-2-1")-->@!item.CapPlural!@<!--(else)-->@!item.CapName!@<!--(end)-->By@!association.FromKey!@];
+--GO
+
+CREATE PROCEDURE [Services].[Get<!--(if association.Cardinality!="1-2-1")-->@!item.CapPlural!@<!--(else)-->@!item.CapName!@<!--(end)-->By@!association.FromKey!@]
+(@@!association.FromKey!@ INT)
+AS
+BEGIN
+    SELECT
+        <!--(for i, attribute in enumerate(item.Attributes))-->
+       [<!--(if association.Cardinality!="1-2-1")-->@!item.Plural.lower()!@<!--(else)-->@!item.Name.lower()!@<!--(end)-->].[@!attribute.Name!@]<!--(if len(item.Attributes)>(i+1))-->,<!--(end)-->
+        <!--(end)-->
+    FROM  [<!--(if item.HasProperty("schema"))-->@!item.GetProperty("schema")!@<!--(else)-->dbo<!--(end)-->].[@!item.Name!@] AS [<!--(if association.Cardinality!="1-2-1")-->@!item.Plural.lower()!@<!--(else)-->@!item.Name.lower()!@<!--(end)-->]
+    WHERE [<!--(if association.Cardinality!="1-2-1")-->@!item.Plural.lower()!@<!--(else)-->@!item.Name.lower()!@<!--(end)-->].[@!association.FromKey!@] = @@!association.FromKey!@;
+END
+
+GO
+    <!--(end)-->
+<!--(end)-->
+
+<!--(if item.HasProperty("queries"))-->
+    <!--(for i, query in enumerate(list(item.GetProperty("queries").split(","))))-->
+IF OBJECT_ID('Services.Get@!item.CapPlural!@@!query.replace("'","").strip()!@', 'P') IS NOT NULL
+DROP PROCEDURE [Services].[Get@!item.CapPlural!@@!query.replace("'","").strip()!@];
+GO
+
+--DROP PROCEDURE IF EXISTS [Services].[Get@!item.CapPlural!@@!query.replace("'","").strip()!@];
+--GO
+
+CREATE PROCEDURE [Services].[Get@!item.CapPlural!@@!query.replace("'","").strip()!@]
+AS
+BEGIN
+    SELECT
+        <!--(for i, attribute in enumerate(item.Attributes))-->
+        [@!item.Plural.lower()!@].[@!attribute.Name!@]<!--(if len(item.Attributes)>(i+1))-->,<!--(end)-->
+        <!--(end)-->
+    FROM  [<!--(if item.HasProperty("schema"))-->@!item.GetProperty("schema")!@<!--(else)-->dbo<!--(end)-->].[@!item.Name!@] AS [@!item.Plural.lower()!@] WITH (NOLOCK)
+    --WHERE <some boolean condition>;
+END
+GO
+    <!--(end)-->
+<!--(end)-->

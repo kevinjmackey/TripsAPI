@@ -1,0 +1,1695 @@
+{
+  "InternalType": "dvo:File",
+  "Token": "RailCrewTrips.dvo",
+  "Roles": [
+    "FILE"
+  ],
+  "Children": [
+    {
+      "InternalType": "dvo:BEGIN",
+      "Token": "BEGIN",
+      "Roles": [
+        "PRIMITIVE",
+        "BLOCK"
+      ],
+      "Children": [
+        {
+          "InternalType": "dvo:Datastore",
+          "Token": "RailCrew",
+          "Properties": [
+            {
+              "DBRead": "Data Source=rcxks-rpt;Initial Catalog=RCXBP;User ID=rcx_snapshots_viewonly;Password=SnapShots15729;Trusted_Connection=False"
+            },
+            {
+              "DBWrite": "Data Source=sql2014cli;Initial Catalog=Railcrew;User ID=FuelPin;Password=XN7zY5AKvyj2VDZmhyTB;Trusted_Connection=False"
+            }
+          ],
+          "Roles": [
+            "DATASOURCE",
+            "IDENTIFIER"
+          ],
+          "Children": [
+            {
+              "InternalType": "dvo:Item",
+              "Token": "Trip",
+              "Properties": [
+                {
+                  "dbr": "RailCrew"
+                },
+                {
+                  "Display Name": "Trips"
+                },
+                {
+                  "queries": [
+                    "Active",
+                    "Closed"
+                  ]
+                },
+                {
+                  "authenticate": "true"
+                }
+              ],
+              "Roles": [
+                "ENTITY",
+                "IDENTIFIER"
+              ],
+              "Children": [
+                {
+                  "InternalType": "dvo:Association",
+                  "Token": "trip_client",
+                  "Properties": [
+                    {
+                      "Cardinality": "M-2-O"
+                    },
+                    {
+                      "Item": "Client"
+                    },
+                    {
+                      "ToKey": "ClientID"
+                    },
+                    {
+                      "FromKey": "ClientID"
+                    }
+                  ],
+                  "Roles": [
+                    "RELATIONSHIP",
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Association",
+                  "Token": "trip_masterClient",
+                  "Properties": [
+                    {
+                      "Cardinality": "M-2-O"
+                    },
+                    {
+                      "Item": "MasterClient"
+                    },
+                    {
+                      "ToKey": "MasterClientID"
+                    },
+                    {
+                      "FromKey": "MasterClientID"
+                    }
+                  ],
+                  "Roles": [
+                    "RELATIONSHIP",
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    },
+                    {
+                      "auto": "true"
+                    },
+                    {
+                      "PK": "true"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Company",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "MasterClientID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ClientID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripNumber",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ControlNumber",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LocationID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PickUpPointID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DropOffPointID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PickupDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Distance",
+                  "Properties": [
+                    {
+                      "Scale": "0"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriveTime",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripType",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ASAP",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsDYVPossible",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "EstAssistHours",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LeadLocomotive",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "RequesterName",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "RequestorPhone",
+                  "Properties": [
+                    {
+                      "Datatype": "CHARACTER"
+                    },
+                    {
+                      "Length": "15"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Comments",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DispatcherNotes",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriverID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "SubContractorID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsAwaitingDispatch",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsWaitingResponse",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsTripClosed",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "VehicleID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriverDispatchTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TimeZoneID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "OverrideManager",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "CallDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TrainNumber",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "GetNextDriverReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "250"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AuditUserID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AuditLastUpdate",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "CalledDriverDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "GetNextVehicleReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "250"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DispatchedByUserID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DispatchedDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsAmended",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "CancelReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "100"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Cancelled",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "CancelReasonID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsMPV",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "OrigPickupDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriverChangeReasonID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "VehicleChangeReasonID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "HasBackhaul",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "RecurringTripID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PickupAdHocLatitude",
+                  "Properties": [
+                    {
+                      "Scale": "10"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PickupAdHocLongitude",
+                  "Properties": [
+                    {
+                      "Scale": "10"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PickupAdHocID",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DropoffAdHocLatitude",
+                  "Properties": [
+                    {
+                      "Scale": "10"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DropoffAdHocLongitude",
+                  "Properties": [
+                    {
+                      "Scale": "10"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DropoffAdHocID",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ParentTripID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ShortKey",
+                  "Properties": [
+                    {
+                      "Datatype": "CHARACTER"
+                    },
+                    {
+                      "Length": "6"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                }
+              ]
+            },
+            {
+              "InternalType": "dvo:Item",
+              "Token": "TripReview",
+              "Properties": [
+                {
+                  "dbr": "RailCrew"
+                },
+                {
+                  "Display Name": "Trip Review"
+                }
+              ],
+              "Roles": [
+                "ENTITY",
+                "IDENTIFIER"
+              ],
+              "Children": [
+                {
+                  "InternalType": "dvo:Association",
+                  "Token": "trip_review_trip",
+                  "Properties": [
+                    {
+                      "Cardinality": "1-2-1"
+                    },
+                    {
+                      "Item": "Trip"
+                    },
+                    {
+                      "ToKey": "TripID"
+                    },
+                    {
+                      "FromKey": "TripID"
+                    }
+                  ],
+                  "Roles": [
+                    "RELATIONSHIP",
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripReviewID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    },
+                    {
+                      "auto": "true"
+                    },
+                    {
+                      "PK": "true"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Approved",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ApprovedDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ApprovedByUserID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripMiles",
+                  "Properties": [
+                    {
+                      "Scale": "2"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "TripWaitMinutes",
+                  "Properties": [
+                    {
+                      "Scale": "2"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "InvoiceID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PayrollID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AssistMiles",
+                  "Properties": [
+                    {
+                      "Scale": "2"
+                    },
+                    {
+                      "Precision": "18"
+                    },
+                    {
+                      "Datatype": "NUMERIC"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsCanceled",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "CancelCode",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IsDispatchApproved",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Ignore",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "FailReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Repo",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "CreateDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DispatchApprovedDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "FailReportIntervalDT",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PendingReportIntervalDT",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "PendingReportIntervalFMDT",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "OverRide",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ApproveNotes",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ITNotes",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ReviewToggle",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AcceptedB2B",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "B2BErrorMessage",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LitmusPassID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LitmusRunCount",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LitmusPassDT",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LitmusFirstRunDT",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "B2BMessageName",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DispatchApprovalReturnReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LateReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "100"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "LitmusOverrideReason",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "4000"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriverCalledDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriverCalledByUser",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ForcedReviewCode",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "MPV",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "MPVLitmusHold",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AcceptedB2BDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "OnTime",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "IgnoreForOTP",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "OTPLateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "OTPArrivalTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AuditUserID",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "AuditLastUpdate",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriveCamSent",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "SheetReceivedDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "SheetReceivedByUser",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ClosedBy",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Mapped",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ReOpenedBy",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ReOpenedDateTime",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "ClientInfo",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "50"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "BookerEmail",
+                  "Properties": [
+                    {
+                      "Datatype": "STRING"
+                    },
+                    {
+                      "Length": "100"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "DriverETA",
+                  "Properties": [
+                    {
+                      "Datatype": "DATETIME"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "SendInfoStatus",
+                  "Properties": [
+                    {
+                      "Datatype": "INTEGER"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                },
+                {
+                  "InternalType": "dvo:Attribute",
+                  "Token": "Verified",
+                  "Properties": [
+                    {
+                      "Datatype": "BOOLEAN"
+                    }
+                  ],
+                  "Roles": [
+                    "IDENTIFIER"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "InternalType": "dvo:END",
+      "Token": "END",
+      "Roles": [
+        "PRIMITIVE",
+        "END_BLOCK"
+      ]
+    }
+  ]
+}

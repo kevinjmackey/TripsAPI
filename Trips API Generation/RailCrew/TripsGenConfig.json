@@ -1,0 +1,139 @@
+{
+    "Application" : 
+    {
+        "Name" : "Trips Service",
+        "Prefix" : "DV",
+        "Namespace" : "TripsAPI",
+        "RootFolder" : "D:\\projects\\RailCrew\\TripsAPI",
+        "AppURI" : "",
+        "Version" : "1.0.0"
+    },
+    "Files" : [
+        {
+            "Label" : "Controllers",
+            "OutputFile" : "@!item.CapPlural!@Controller.cs",
+            "OutputFolder" : "@!RootFolder!@\\Controllers\\",
+            "FileName" : ".\\RailCrew\\Templates\\Each\\Controllers.tmpl",
+            "Action" : "each"
+        },
+        {
+            "Label" : "Services",
+            "OutputFile" : "@!item.CapName!@Service.cs",
+            "OutputFolder" : "@!RootFolder!@\\Services\\",
+            "FileName" : ".\\RailCrew\\Templates\\Each\\Services.tmpl",
+            "Action" : "each"
+        },
+        {
+            "Label" : "Entities",
+            "OutputFile" : "@!item.CapName!@.cs",
+            "OutputFolder" : "@!RootFolder!@\\Entities\\",
+            "FileName" : ".\\RailCrew\\Templates\\Each\\Entities.tmpl",
+            "Action" : "each"
+        },
+        {
+            "Label" : "CRUD Stored Procedures",
+            "OutputFile" : "@!item.Name!@.sql",
+            "OutputFolder" : "@!RootFolder!@\\sql\\",
+            "FileName" : ".\\RailCrew\\Templates\\Each\\StoredProcedureDDL.tmpl",
+            "Action" : "each"
+        },
+        {
+            "Label" : "App Settings",
+            "OutputFile" : "AppSettings.cs",
+            "OutputFolder" : "@!RootFolder!@\\Helpers\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\AppSettings.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Authorize Attribute",
+            "OutputFile" : "AuthorizeAttribute.cs",
+            "OutputFolder" : "@!RootFolder!@\\Helpers\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\AuthorizeAttribute.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Jwt Middleware",
+            "OutputFile" : "JwtMiddleware.cs",
+            "OutputFolder" : "@!RootFolder!@\\Helpers\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\JwtMiddleware.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Launcher Program",
+            "OutputFile" : "@!Namespace!@.cs",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\Program.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Startup Class",
+            "OutputFile" : "Startup.cs",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\Startup.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Appsettings",
+            "OutputFile" : "AppSettings.json",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\AppSettingsjson.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "User Class",
+            "OutputFile" : "User.cs",
+            "OutputFolder" : "@!RootFolder!@\\Entities\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\User.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "User Service",
+            "OutputFile" : "UserService.cs",
+            "OutputFolder" : "@!RootFolder!@\\Services\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\UserService.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Authenticate Request",
+            "OutputFile" : "AuthenticateRequest.cs",
+            "OutputFolder" : "@!RootFolder!@\\Models\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\AuthenticateRequest.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Authenticate Response",
+            "OutputFile" : "AuthenticateResponse.cs",
+            "OutputFolder" : "@!RootFolder!@\\Models\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\AuthenticateResponse.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "Readme File for repo",
+            "OutputFile" : "README.md",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Once\\README.tmpl",
+            "Action" : "once"
+        },
+        {
+            "Label" : "GIT Ignore File",
+            "OutputFile" : ".gitignore",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Static\\.gitignore",
+            "Action" : "copy"
+        },
+        {
+            "Label" : "Appsettings (Dev)",
+            "OutputFile" : "AppSettings.Development.json",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Static\\AppSettings.Development.json",
+            "Action" : "copy"
+        },
+        {
+            "Label" : "C# Project File",
+            "OutputFile" : "@!Namespace!@.csproj",
+            "OutputFolder" : "@!RootFolder!@\\",
+            "FileName" : ".\\RailCrew\\Templates\\Static\\Project.csproj",
+            "Action" : "copy"
+        }
+    ]
+}
